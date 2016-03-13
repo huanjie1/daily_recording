@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace daily_recording
 {
@@ -14,7 +16,42 @@ namespace daily_recording
     {
         DateTime dt = new DateTime();
         string filename;
+        string windowdescription,windowname;
         StreamWriter recordfilesw;
+        IntPtr windowhandle;
+        StringBuilder windowname0 = new StringBuilder(250);
+        int maxnamelength = 250;
+        int namelength;
+        int threadid;
+        int processid;
+        Point mouse = new Point(0, 0);
+        Point mouse0 = new Point(0, 0);
+        int mousestop;
+        string mousestate;
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        public static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
+
+        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        public static extern int GetWindowThreadProcessId(IntPtr hwnd, out int ID);
+
+        //根据窗体标题查找窗口句柄（支持模糊匹配）
+        public static IntPtr FindWindow(string title)
+        {
+            Process[] ps = Process.GetProcesses();
+            foreach (Process p in ps)
+            {
+                if (p.MainWindowTitle.IndexOf(title) != -1)
+                {
+                    return p.MainWindowHandle;
+                }
+            }
+            return IntPtr.Zero;
+        }
+
 
         public Form1()
         {
@@ -56,6 +93,12 @@ namespace daily_recording
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if(IntPtr.Zero!=FindWindow("DAILY RECORDING"))//避免多开
+            {
+                MessageBox.Show("程序已经打开！");
+                Process.GetCurrentProcess().Kill();
+            }
+                
             dt = DateTime.Now;
             //new day: after 4 a.m.
             if (dt.Hour > 4)
@@ -68,15 +111,44 @@ namespace daily_recording
                 filename = "record" + dt2.ToString("yyyyMMdd") + ".csv";
             }
             //recordfile = new FileStream(filename, FileMode.OpenOrCreate);
-            recordfilesw = new StreamWriter(filename, true);
+            recordfilesw = new StreamWriter(filename, true,System.Text.Encoding.Default);
             recordfilesw.Write(dt.ToString("HH,mm,ss") + ",START,program launched," + dt.ToString("yyyyMMdd") + "\n");//hh:12,HH:24
             recordfilesw.Flush();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            windowhandle = GetForegroundWindow();
+            namelength = GetWindowText(windowhandle, windowname0, maxnamelength);
+            threadid = GetWindowThreadProcessId(windowhandle, out processid);//引用输出为进程ID，返回值为线程ID
+            try
+            {
+                windowdescription = Process.GetProcessById(processid).MainModule.FileVersionInfo.FileDescription.ToString();
+            }
+            catch { }
+            windowname = windowname0.ToString().Replace(',',' ');
+
+            mouse = Control.MousePosition;           
+            
+            if (mouse == mouse0)
+                mousestop++;
+            else
+                mousestop = 0;
+
+            if (mousestop >= 5)
+                mousestate = "stop";
+            else
+                mousestate = "move";
+
+            mouse0 = mouse;
+
             dt = DateTime.Now;
-            recordfilesw.Write(dt.ToString("HH,mm,ss") + ",window name,description,move\n");
+            recordfilesw.Write(
+                dt.ToString("HH,mm,ss") + "," +
+                windowname + "," +
+                windowdescription + "," +
+                mousestate + "\n"
+                );
             recordfilesw.Flush();
         }
     }
