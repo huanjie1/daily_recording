@@ -66,6 +66,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="api_ref.cs1" />
     <None Include="PIC1.vsdx" />
@@ -82,6 +83,9 @@
   <ItemGroup>
     <Content Include="pic1.ico" />
     <Content Include="PIC1.png" />
+    <None Include="Resources\Icon1.ico" />
+    <Content Include="pic2.ico" />
+    <Content Include="PIC2.png" />
     <Content Include="time.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
