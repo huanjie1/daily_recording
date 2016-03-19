@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>time.ico</ApplicationIcon>
+    <ApplicationIcon>pic1.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -68,6 +68,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="api_ref.cs1" />
+    <None Include="PIC1.vsdx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -79,6 +80,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="pic1.ico" />
+    <Content Include="PIC1.png" />
     <Content Include="time.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -81,6 +81,7 @@ namespace daily_recording
             dt = DateTime.Now;
             recordfilesw.Write(dt.ToString("HH,mm,ss") + ",DISABLE,recording disabled," + dt.ToString("yyyyMMdd") + "\n");
             recordfilesw.Flush();
+            Process.Start("explorer.exe", System.Environment.CurrentDirectory);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
