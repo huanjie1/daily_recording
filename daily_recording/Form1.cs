@@ -213,8 +213,12 @@ namespace daily_recording
             else
                 mousestop = 0;
 
-            if (mousestop >= 5)
+            if (mousestop >= 3)
+            {
                 mousestate = "stop";
+                windowname = "NOT at computer";
+                windowdescription = "";
+            }                
             else
                 mousestate = "move";
 

@@ -67,7 +67,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 2000;
+            this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // notifyIcon1
@@ -85,7 +85,7 @@
             this.sTOPRECORDINGToolStripMenuItem,
             this.eXITToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(191, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(191, 92);
             // 
             // sHOWFORMToolStripMenuItem
             // 
