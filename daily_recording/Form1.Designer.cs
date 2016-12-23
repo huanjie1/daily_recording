@@ -39,6 +39,7 @@
             this.sTARTRECORDINGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sTOPRECORDINGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eXITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sHOWRECORDINGSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,38 +83,46 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sHOWFORMToolStripMenuItem,
             this.sTARTRECORDINGToolStripMenuItem,
+            this.sHOWRECORDINGSToolStripMenuItem,
             this.sTOPRECORDINGToolStripMenuItem,
             this.eXITToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(191, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 136);
             // 
             // sHOWFORMToolStripMenuItem
             // 
             this.sHOWFORMToolStripMenuItem.Name = "sHOWFORMToolStripMenuItem";
-            this.sHOWFORMToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.sHOWFORMToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.sHOWFORMToolStripMenuItem.Text = "SHOW FORM";
             this.sHOWFORMToolStripMenuItem.Click += new System.EventHandler(this.sHOWFORMToolStripMenuItem_Click);
             // 
             // sTARTRECORDINGToolStripMenuItem
             // 
             this.sTARTRECORDINGToolStripMenuItem.Name = "sTARTRECORDINGToolStripMenuItem";
-            this.sTARTRECORDINGToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.sTARTRECORDINGToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.sTARTRECORDINGToolStripMenuItem.Text = "START RECORDING";
             this.sTARTRECORDINGToolStripMenuItem.Click += new System.EventHandler(this.sTARTRECORDINGToolStripMenuItem_Click);
             // 
             // sTOPRECORDINGToolStripMenuItem
             // 
             this.sTOPRECORDINGToolStripMenuItem.Name = "sTOPRECORDINGToolStripMenuItem";
-            this.sTOPRECORDINGToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.sTOPRECORDINGToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.sTOPRECORDINGToolStripMenuItem.Text = "STOP RECORDING";
             this.sTOPRECORDINGToolStripMenuItem.Click += new System.EventHandler(this.sTOPRECORDINGToolStripMenuItem_Click);
             // 
             // eXITToolStripMenuItem
             // 
             this.eXITToolStripMenuItem.Name = "eXITToolStripMenuItem";
-            this.eXITToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.eXITToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.eXITToolStripMenuItem.Text = "EXIT";
             this.eXITToolStripMenuItem.Click += new System.EventHandler(this.eXITToolStripMenuItem_Click);
+            // 
+            // sHOWRECORDINGSToolStripMenuItem
+            // 
+            this.sHOWRECORDINGSToolStripMenuItem.Name = "sHOWRECORDINGSToolStripMenuItem";
+            this.sHOWRECORDINGSToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.sHOWRECORDINGSToolStripMenuItem.Text = "SHOW RECORDINGS";
+            this.sHOWRECORDINGSToolStripMenuItem.Click += new System.EventHandler(this.sHOWRECORDINGSToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -149,6 +158,7 @@
         private System.Windows.Forms.ToolStripMenuItem sTARTRECORDINGToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sTOPRECORDINGToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eXITToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sHOWRECORDINGSToolStripMenuItem;
     }
 }
 

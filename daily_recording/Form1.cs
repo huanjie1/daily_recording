@@ -194,6 +194,11 @@ namespace daily_recording
             Process.GetCurrentProcess().Kill();
         }
 
+        private void sHOWRECORDINGSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", System.Environment.CurrentDirectory);
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             windowhandle = GetForegroundWindow();
