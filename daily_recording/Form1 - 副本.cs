@@ -30,8 +30,6 @@ namespace daily_recording
         int gztimeidx;
         string content;
         DateTime starttime = new DateTime(2021, 8, 1, 9, 15, 0);
-        DateTime lunchstart = new DateTime(2021, 8, 1, 11, 35, 0);
-        DateTime lunchend = new DateTime(2021, 8, 1, 12, 55, 0);
         DateTime endtime = new DateTime(2021, 8, 1, 15, 5, 0);
         int refminute = 14;
 
@@ -187,35 +185,12 @@ namespace daily_recording
         private void timer1_Tick(object sender, EventArgs e)
         {
             dt = DateTime.Now;
-            bool netstate = true;
-            if ((dt.TimeOfDay>=starttime.TimeOfDay && dt.TimeOfDay <= lunchstart.TimeOfDay) ||
-                    (dt.TimeOfDay >= lunchend.TimeOfDay && dt.TimeOfDay <= endtime.TimeOfDay))
+            if (dt.TimeOfDay>=starttime.TimeOfDay && dt.TimeOfDay <= endtime.TimeOfDay)                
             {
                 if (dt.Minute!=refminute)
                 {
-                    for(int idx=1;idx<=30;idx++)
-                    {
-                        if (readresponse("006229") == 0)
-                        {
-                            netstate = true;
-                            break;
-                        }
-                        System.Threading.Thread.Sleep(1000);
-                        netstate = false;
-                    }
-                    if (netstate)
-                    {
-                        recordfilesw.Write (
-                                dt.ToString("HH:mm:ss, ") + "guzhizhangfu:"+
-                                content.Substring(gszzlidx + 9, gztimeidx - gszzlidx - 11) +
-                                ", guzhitime:" +
-                                content.Substring(gztimeidx + 10, 16) +
-                                "\n");
-                    }
-                    else
-                    {
-                        recordfilesw.Write(dt.ToString("HH:mm:ss,") + "bad net \n");
-                    }
+                    readresponse("006229");
+                    recordfilesw.Write(dt.ToString("HH:mm:ss,") + content.Substring(gszzlidx + 9, gztimeidx - gszzlidx - 11) + "\n");
                     recordfilesw.Flush();
                     refminute = dt.Minute;
                 }         
@@ -229,20 +204,12 @@ namespace daily_recording
 
         }
 
-        int readresponse(string jijincode)
+        void readresponse(string jijincode)
         {
             req = (HttpWebRequest)HttpWebRequest.Create("http://fundgz.1234567.com.cn/js/" + jijincode + ".js?");
             //req.Method = "GET"; //default value
             //req.ProtocolVersion = new Version(1, 1); //default value
-            try 
-            { 
-                response = req.GetResponse() as HttpWebResponse; 
-            }
-            catch
-            {
-                return -1;
-            }
-            
+            response = req.GetResponse() as HttpWebResponse;
             ////Header
             //foreach (var item in response.Headers)
             //{
@@ -252,7 +219,7 @@ namespace daily_recording
             //}
             //如果主体信息不为空，则接收主体信息内容
             if (response.ContentLength <= 0)
-                return -1;
+                return;
             //接收响应主体信息
             stream = response.GetResponseStream();
 
@@ -280,8 +247,6 @@ namespace daily_recording
             gszidx = content.IndexOf("\"gsz\":\"");
             gszzlidx = content.IndexOf("\"gszzl\":\"");
             gztimeidx = content.IndexOf("\"gztime\":\"");
-
-            return 0;
         }
     }
 }
