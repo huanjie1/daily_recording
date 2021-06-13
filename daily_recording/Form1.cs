@@ -29,7 +29,7 @@ namespace daily_recording
         int gszzlidx;
         int gztimeidx;
         string content;
-        DateTime starttime = new DateTime(2021, 8, 1, 9, 15, 0);
+        DateTime starttime = new DateTime(2021, 8, 9, 9, 15, 0);
         DateTime lunchstart = new DateTime(2021, 8, 1, 11, 35, 0);
         DateTime lunchend = new DateTime(2021, 8, 1, 12, 55, 0);
         DateTime endtime = new DateTime(2021, 8, 1, 15, 5, 0);
@@ -90,7 +90,7 @@ namespace daily_recording
                 if ( p.ProcessName == "daily_recording" && p.Id!= Process.GetCurrentProcess().Id)
                 {
                     MessageBox.Show("程序已经打开！");
-                    Process.GetCurrentProcess().Kill();
+                    //Process.GetCurrentProcess().Kill();
                 }
             }
 
@@ -188,14 +188,16 @@ namespace daily_recording
         {
             dt = DateTime.Now;
             bool netstate = true;
-            if ((dt.TimeOfDay>=starttime.TimeOfDay && dt.TimeOfDay <= lunchstart.TimeOfDay) ||
+            if ( (dt.DayOfWeek!= DayOfWeek.Saturday) && (dt.DayOfWeek != DayOfWeek.Sunday) &&
+                ((dt.TimeOfDay>=starttime.TimeOfDay && dt.TimeOfDay <= lunchstart.TimeOfDay) ||
                     (dt.TimeOfDay >= lunchend.TimeOfDay && dt.TimeOfDay <= endtime.TimeOfDay))
+                    )
             {
                 if (dt.Minute!=refminute)
                 {
                     for(int idx=1;idx<=30;idx++)
                     {
-                        if (readresponse("006229") == 0)
+                        if (readresponse("006229") == 0 && gztimeidx - gszzlidx - 11>0)
                         {
                             netstate = true;
                             break;
