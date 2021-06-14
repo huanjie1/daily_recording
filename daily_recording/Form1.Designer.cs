@@ -37,17 +37,19 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.sHOWFORMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sTARTRECORDINGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mANUALToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sHOWRECORDINGSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sTOPRECORDINGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eXITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sHOWRECORDINGSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Location = new System.Drawing.Point(16, 15);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(219, 23);
+            this.button1.Size = new System.Drawing.Size(292, 29);
             this.button1.TabIndex = 0;
             this.button1.Text = "ENABLE";
             this.button1.UseVisualStyleBackColor = true;
@@ -56,11 +58,12 @@
             // button2
             // 
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(12, 51);
-            this.button2.MaximumSize = new System.Drawing.Size(219, 23);
-            this.button2.MinimumSize = new System.Drawing.Size(219, 23);
+            this.button2.Location = new System.Drawing.Point(16, 64);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.MaximumSize = new System.Drawing.Size(292, 29);
+            this.button2.MinimumSize = new System.Drawing.Size(292, 29);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(219, 23);
+            this.button2.Size = new System.Drawing.Size(292, 29);
             this.button2.TabIndex = 1;
             this.button2.Text = "DISABLE";
             this.button2.UseVisualStyleBackColor = true;
@@ -68,7 +71,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 5000;
+            this.timer1.Interval = 3600000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // notifyIcon1
@@ -80,62 +83,72 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sHOWFORMToolStripMenuItem,
             this.sTARTRECORDINGToolStripMenuItem,
+            this.mANUALToolStripMenuItem,
             this.sHOWRECORDINGSToolStripMenuItem,
             this.sTOPRECORDINGToolStripMenuItem,
             this.eXITToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(199, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(229, 148);
             // 
             // sHOWFORMToolStripMenuItem
             // 
             this.sHOWFORMToolStripMenuItem.Name = "sHOWFORMToolStripMenuItem";
-            this.sHOWFORMToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.sHOWFORMToolStripMenuItem.Size = new System.Drawing.Size(228, 24);
             this.sHOWFORMToolStripMenuItem.Text = "SHOW FORM";
             this.sHOWFORMToolStripMenuItem.Click += new System.EventHandler(this.sHOWFORMToolStripMenuItem_Click);
             // 
             // sTARTRECORDINGToolStripMenuItem
             // 
             this.sTARTRECORDINGToolStripMenuItem.Name = "sTARTRECORDINGToolStripMenuItem";
-            this.sTARTRECORDINGToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.sTARTRECORDINGToolStripMenuItem.Size = new System.Drawing.Size(228, 24);
             this.sTARTRECORDINGToolStripMenuItem.Text = "START RECORDING";
             this.sTARTRECORDINGToolStripMenuItem.Click += new System.EventHandler(this.sTARTRECORDINGToolStripMenuItem_Click);
+            // 
+            // mANUALToolStripMenuItem
+            // 
+            this.mANUALToolStripMenuItem.Name = "mANUALToolStripMenuItem";
+            this.mANUALToolStripMenuItem.Size = new System.Drawing.Size(228, 24);
+            this.mANUALToolStripMenuItem.Text = "MANUALLY RECORD";
+            this.mANUALToolStripMenuItem.Click += new System.EventHandler(this.mANUALToolStripMenuItem_Click);
+            // 
+            // sHOWRECORDINGSToolStripMenuItem
+            // 
+            this.sHOWRECORDINGSToolStripMenuItem.Name = "sHOWRECORDINGSToolStripMenuItem";
+            this.sHOWRECORDINGSToolStripMenuItem.Size = new System.Drawing.Size(228, 24);
+            this.sHOWRECORDINGSToolStripMenuItem.Text = "SHOW RECORDINGS";
+            this.sHOWRECORDINGSToolStripMenuItem.Click += new System.EventHandler(this.sHOWRECORDINGSToolStripMenuItem_Click);
             // 
             // sTOPRECORDINGToolStripMenuItem
             // 
             this.sTOPRECORDINGToolStripMenuItem.Name = "sTOPRECORDINGToolStripMenuItem";
-            this.sTOPRECORDINGToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.sTOPRECORDINGToolStripMenuItem.Size = new System.Drawing.Size(228, 24);
             this.sTOPRECORDINGToolStripMenuItem.Text = "STOP RECORDING";
             this.sTOPRECORDINGToolStripMenuItem.Click += new System.EventHandler(this.sTOPRECORDINGToolStripMenuItem_Click);
             // 
             // eXITToolStripMenuItem
             // 
             this.eXITToolStripMenuItem.Name = "eXITToolStripMenuItem";
-            this.eXITToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.eXITToolStripMenuItem.Size = new System.Drawing.Size(228, 24);
             this.eXITToolStripMenuItem.Text = "EXIT";
             this.eXITToolStripMenuItem.Click += new System.EventHandler(this.eXITToolStripMenuItem_Click);
             // 
-            // sHOWRECORDINGSToolStripMenuItem
-            // 
-            this.sHOWRECORDINGSToolStripMenuItem.Name = "sHOWRECORDINGSToolStripMenuItem";
-            this.sHOWRECORDINGSToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-            this.sHOWRECORDINGSToolStripMenuItem.Text = "SHOW RECORDINGS";
-            this.sHOWRECORDINGSToolStripMenuItem.Click += new System.EventHandler(this.sHOWRECORDINGSToolStripMenuItem_Click);
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(243, 91);
+            this.ClientSize = new System.Drawing.Size(321, 104);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(259, 130);
+            this.MaximumSize = new System.Drawing.Size(339, 151);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(259, 130);
+            this.MinimumSize = new System.Drawing.Size(339, 151);
             this.Name = "Form1";
             this.Opacity = 0D;
             this.Text = "DAILY RECORDING: STOP";
@@ -159,6 +172,7 @@
         private System.Windows.Forms.ToolStripMenuItem sTOPRECORDINGToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eXITToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sHOWRECORDINGSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mANUALToolStripMenuItem;
     }
 }
 
