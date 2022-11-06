@@ -275,9 +275,17 @@ namespace daily_recording
             //gszzlidx = content.IndexOf("\"gszzl\":\"");
             gztimeidx = content.IndexOf("\"gztime\":\"");
 
-            jijinname = content.Substring(nameidx + 8, jzrqidx - nameidx - 10);
-            jijindate = content.Substring(gztimeidx + 10, 10);
 
+            try
+            {
+                jijinname = content.Substring(nameidx + 8, jzrqidx - nameidx - 10);
+                jijindate = content.Substring(gztimeidx + 10, 10);
+            }
+            catch
+            {
+                return -1;
+            }
+            
 
             stream.Close();
             response.Close();
